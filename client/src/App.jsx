@@ -76,11 +76,14 @@ function App() {
     setLoading(true);
     setResult("");
 
-    const response = await fetch("http://localhost:5000/api/interpret", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ dream, mode }),
-    });
+    const response = await fetch(
+      "https://dream-ai-app.onrender.com/api/interpret",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dream, mode }),
+      },
+    );
 
     const data = await response.json();
     setResult(data.interpretation);
@@ -97,11 +100,14 @@ function App() {
     setEmailSent(false);
 
     try {
-      const response = await fetch("http://localhost:5000/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, interpretation: result }),
-      });
+      const response = await fetch(
+        "https://dream-ai-app.onrender.com/api/send-email",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, interpretation: result }),
+        },
+      );
 
       const data = await response.json();
 
