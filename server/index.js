@@ -38,8 +38,8 @@ app.post("/api/interpret", async (req, res) => {
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      max_tokens: 1500,
-      temperature: 0.8,
+      max_tokens: 500,
+      temperature: 0.7,
       messages: [
         {
           role: "system",
@@ -111,7 +111,8 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
-// Start backend server
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
